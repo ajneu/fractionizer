@@ -2,6 +2,8 @@
 
 C++ class to convert floating point values to fractions, by using continued fractions
 
+image::https://latex.codecogs.com/png.latex?\large%20\begin{align*}%2022.345%20%26%3D%2022%20&plus;%200.345%20%26%20%26%3D%2022%20&plus;%20\frac{1}{2.\overline{8985507246376811594202}}%20\\%20%26%3D%2022%20&plus;%20\frac{1}{2&plus;0.\overline{8985507246376811594202}}%20%26%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1.1\overline{129032258064516}}}%20\\%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%200.1\overline{129032258064516}}}%20%26%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%20\frac{1}{8.\overline{857142}}}}%20\\%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%20\frac{1}{8&plus;0.\overline{857142}}}}%20%26%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%20\frac{1}{8&plus;\frac{1}{1.1\overline{6}}}}}%20\\%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%20\frac{1}{8&plus;\frac{1}{1%20&plus;%200.1\overline{6}}}}}%20%26%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%20\frac{1}{8&plus;\frac{1}{1%20&plus;%20\frac{1}{6.0}}}}}%20\\%20%26%3D%2022%20&plus;%20\frac{1}{2%20&plus;%20\frac{1}{1%20&plus;%20\frac{1}{8&plus;\frac{1}{1%20&plus;%20\frac{1}{6}}}}}%20%26%20%26%20\\%20%26%3D%20\frac{4469}{200}%20\end{align*}
+
 image::http://latex.codecogs.com/gif.latex?0.4%3D%5Cfrac%7B1%7D%7B2.5%7D[Equation, link="http://latex.codecogs.com/gif.latex?0.4%3D%5Cfrac%7B1%7D%7B2.5%7D"]
 
 http://stackoverflow.com/a/12503010
