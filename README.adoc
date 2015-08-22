@@ -1,0 +1,7 @@
+= Fractionizer
+
+C++ class to convert floating point values to fractions, by using continued fractions
+
+image::http://latex.codecogs.com/gif.latex?0.4%3D%5Cfrac%7B1%7D%7B2.5%7D[Equation, link="http://latex.codecogs.com/gif.latex?0.4%3D%5Cfrac%7B1%7D%7B2.5%7D"]
+
+http://stackoverflow.com/a/12503010
