@@ -10,10 +10,13 @@ image::{example_link_svg}[Continued Fraction,link=https://latex.codecogs.com/svg
 (Ref link:++https://www.codecogs.com/eqnedit.php?latex=\large&space;\begin{align*}&space;22.345&space;&=&space;22&space;&plus;&space;0.345&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2.\overline{8985507246376811594202}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&plus;0.\overline{8985507246376811594202}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1.1\overline{129032258064516}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;0.1\overline{129032258064516}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8.\overline{857142}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;0.\overline{857142}}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1.1\overline{6}}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;0.1\overline{6}}}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;\frac{1}{6.0}}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;\frac{1}{6}}}}}&space;&&space;&&space;\\&space;&=&space;\frac{4469}{200}&space;\end{align*}++[LaTex Editor])
 
 As can be seen, we truncate the number, so that we get an integer (whole number); and then calculate the reciprocal of the fractional part:
-image::{equation_link_svg}[asdf]
+
+image::{equation_link_svg}[Equation,link="https://latex.codecogs.com/svg.latex?\begin{align*}&space;x_{(i)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{\left&space;(\frac{1}{\mathrm{frac}(&space;x_{(i)}&space;)}&space;\right&space;)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{x_{(i&plus;1)}}&space;\end{align*}"]
+(Ref link:++https://www.codecogs.com/eqnedit.php?latex=\begin{align*}&space;x_{(i)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{\left&space;(\frac{1}{\mathrm{frac}(&space;x_{(i)}&space;)}&space;\right&space;)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{x_{(i&plus;1)}}&space;\end{align*}++[LaTeX Editor], with `frac(x)` as shown https://en.wikipedia.org/wiki/Fractional_part[here])
+
 
 == Additional
-LaTeX source for the image is:
+LaTeX source for the example is:
 [source,latex]
 ----
 \begin{align*}
@@ -33,4 +36,12 @@ LaTeX source for the image is:
 \end{align*}
 ----
 
-As we can see
+LaTeX source for the formula is:
+[source,latex]
+----
+\begin{align*} 
+x_{(i)} = \left (x_{(i)} - \mathrm{frac}( x_{(i)} ) \right ) + \mathrm{frac}( x_{(i)} )
+        = \left (x_{(i)} - \mathrm{frac}( x_{(i)} ) \right ) + \frac{1}{\left (\frac{1}{\mathrm{frac}( x_{(i)} )} \right )} 
+        = \left (x_{(i)} - \mathrm{frac}( x_{(i)} ) \right ) + \frac{1}{x_{(i+1)}} 
+\end{align*}
+----
