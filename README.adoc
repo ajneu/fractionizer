@@ -1,9 +1,17 @@
 = Fractionizer
 :source-highlighter: prettify
-                     // coderay highlightjs prettify pygments
+//                   coderay highlightjs prettify pygments
 :coderay-linenums-mode: inline
+
+ifdef::env-github[]
+:imagesdir: https://cdn.rawgit.com/ajneu/fractionizer/master/images
+endif::[]
+
+ifndef::env-github[]
+:imagesdir: https://cdn.rawgit.com/ajneu/fractionizer/master/images
+//images
 :toc:
-:imagesdir: images
+endif::[]
 
 C++ class to convert floating point values to fractions, by using continued fractions.
 
