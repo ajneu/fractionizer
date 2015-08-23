@@ -29,6 +29,13 @@ Fractionizer::fractionize(val, num, denom);
 std::cout << "22.345 == " << Print_float::print(num) << '/' << Print_float::print(denom) << std::endl;
 ----
 
+One could also use increased precision:
+[source,cpp]
+----
+long double num, denom;
+Fractionizer::fractionize(22.345L, num, denom);
+----
+
 == How does it work?
 
 How this works is best shown by an example:
@@ -94,6 +101,20 @@ The code currently uses
 ----
 (https://github.com/ajneu/fractionizer/blob/master/src/fractionizer.h#L69[ref]) +
 Up till now, the loop has always ended nicely. But I have no proof that it is safe, and it might be better to use some threshold comparision (the comment shows a possibility). If you can provide an example where the loop will not end, or furnish a proof that it will always end, then please let me know!
+
+For the real weirdness of floating point, try this:
+[source,cpp]
+----
+long double num, denom;
+Fractionizer::fractionize<long double>(22.345, num, denom);  // 22.345 converted to long double parameter
+----
+Here I get `98274476749292.L/4398052215229.L`
+Thus `22.345` as a `double` is so skew (since a double is stored as binary with limited precision); that converting it to `long double` leads to a different `long double`, than `22.345L`:
+[source,cpp]
+----
+assert(static_cast<long double>(22.345) != 22.345L);
+std::cout << Print_float::print(static_cast<long double>(22.345) - 22.345L) << std::endl; // -1.13624387676480864684e-15L on my machine (x86_64-linux-gnu, compiled with gcc g++)
+----
 
 == Using computer calculators (PARI/GP and Calc)
 
