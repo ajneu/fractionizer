@@ -1,0 +1,11 @@
+\documentclass[crop,border=1,convert=pdf2svg]{standalone}
+\usepackage{graphicx} % for \scalebox
+\usepackage{amsmath}
+\makeatletter
+\begin{document}
+\scalebox{1.4}{%
+$\displaystyle
+\begin{aligned}
+  x_{(i)} = w_{(i)} + \frac{1}{w_{(i+1)}+\frac{1}{w_{(i+2)+\frac{1}{...+\frac{1}{...+\frac{1}{w_{(j)}}}}}}}
+\end{aligned}$}
+\end{document}

@@ -1,70 +1,47 @@
 = Fractionizer
-:example_link_svg: https://latex.codecogs.com/svg.latex?%5Clarge%20%5Cbegin%7Balign*%7D%2022.345%20%26%3D%2022%20&plus;%200.345%20%26%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2.%5Coverline%7B8985507246376811594202%7D%7D%20%5C%5C%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2&plus;0.%5Coverline%7B8985507246376811594202%7D%7D%20%26%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1.1%5Coverline%7B129032258064516%7D%7D%7D%20%5C%5C%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%200.1%5Coverline%7B129032258064516%7D%7D%7D%20%26%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B8.%5Coverline%7B857142%7D%7D%7D%7D%20%5C%5C%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B8&plus;0.%5Coverline%7B857142%7D%7D%7D%7D%20%26%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B8&plus;%5Cfrac%7B1%7D%7B1.1%5Coverline%7B6%7D%7D%7D%7D%7D%20%5C%5C%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B8&plus;%5Cfrac%7B1%7D%7B1%20&plus;%200.1%5Coverline%7B6%7D%7D%7D%7D%7D%20%26%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B8&plus;%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B6.0%7D%7D%7D%7D%7D%20%5C%5C%20%26%3D%2022%20&plus;%20%5Cfrac%7B1%7D%7B2%20&plus;%20%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B8&plus;%5Cfrac%7B1%7D%7B1%20&plus;%20%5Cfrac%7B1%7D%7B6%7D%7D%7D%7D%7D%20%26%20%26%20%5C%5C%20%26%3D%20%5Cfrac%7B4469%7D%7B200%7D%20%5Cend%7Balign*%7D
-:equation_link_svg: https://latex.codecogs.com/svg.latex?%5Cbegin%7Balign*%7D%20x_%7B%28i%29%7D%20%3D%20%5Cleft%20%28x_%7B%28i%29%7D%20-%20%5Cmathrm%7Bfrac%7D%28%20x_%7B%28i%29%7D%20%29%20%5Cright%20%29%20&plus;%20%5Cmathrm%7Bfrac%7D%28%20x_%7B%28i%29%7D%20%29%20%3D%20%5Cleft%20%28x_%7B%28i%29%7D%20-%20%5Cmathrm%7Bfrac%7D%28%20x_%7B%28i%29%7D%20%29%20%5Cright%20%29%20&plus;%20%5Cfrac%7B1%7D%7B%5Cleft%20%28%5Cfrac%7B1%7D%7B%5Cmathrm%7Bfrac%7D%28%20x_%7B%28i%29%7D%20%29%7D%20%5Cright%20%29%7D%20%3D%20%5Cleft%20%28x_%7B%28i%29%7D%20-%20%5Cmathrm%7Bfrac%7D%28%20x_%7B%28i%29%7D%20%29%20%5Cright%20%29%20&plus;%20%5Cfrac%7B1%7D%7Bx_%7B%28i&plus;1%29%7D%7D%20%5Cend%7Balign*%7D
+:source-highlighter: prettify
+                     // coderay highlightjs prettify pygments
+:coderay-linenums-mode: inline
+:toc:
+:imagesdir: images
 
 C++ class to convert floating point values to fractions, by using continued fractions.
 
 How this works is best shown by an example:
 
-image::{example_link_svg}[Continued Fraction,link=https://latex.codecogs.com/svg.latex?\large&space;\begin{align*}&space;22.345&space;&=&space;22&space;&plus;&space;0.345&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2.\overline{8985507246376811594202}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&plus;0.\overline{8985507246376811594202}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1.1\overline{129032258064516}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;0.1\overline{129032258064516}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8.\overline{857142}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;0.\overline{857142}}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1.1\overline{6}}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;0.1\overline{6}}}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;\frac{1}{6.0}}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;\frac{1}{6}}}}}&space;&&space;&&space;\\&space;&=&space;\frac{4469}{200}&space;\end{align*}]
-(Ref link:++https://www.codecogs.com/eqnedit.php?latex=\large&space;\begin{align*}&space;22.345&space;&=&space;22&space;&plus;&space;0.345&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2.\overline{8985507246376811594202}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&plus;0.\overline{8985507246376811594202}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1.1\overline{129032258064516}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;0.1\overline{129032258064516}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8.\overline{857142}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;0.\overline{857142}}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1.1\overline{6}}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;0.1\overline{6}}}}}&space;&&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;\frac{1}{6.0}}}}}&space;\\&space;&=&space;22&space;&plus;&space;\frac{1}{2&space;&plus;&space;\frac{1}{1&space;&plus;&space;\frac{1}{8&plus;\frac{1}{1&space;&plus;&space;\frac{1}{6}}}}}&space;&&space;&&space;\\&space;&=&space;\frac{4469}{200}&space;\end{align*}++[LaTex Editor])
+image::example_frac.svg[Continued Fraction]
 
-As can be seen, given a number &nbsp; ~image:https://latex.codecogs.com/svg.latex?x_%7B%28i%29%7D[]~: +
-if this number is not yet an integer (whole number)
+The continued fraction has only integer whole numbers, that can be expressed in a vector:
 
-* we truncate the number, so that we get an integer (whole number): ~image:https://latex.codecogs.com/svg.latex?%5Cleft%20%28%20x_%7B%28i%29%7D-%5Cmathrm%7Bfrac%7D%28x_%7B%28i%29%7D%29%20%5Cright%20%29%20%3D%20w_%7Bi%7D[]~ +
+image::vector_example.svg[]
+
+As a formula-equation, the generation of continued fractions can be expressed as:
+
+image::equation.svg[Equation]
+(with `frac(x)` as shown https://en.wikipedia.org/wiki/Fractional_part[here])
+
+As can be seen from the formula-equation above, given a number image:x_i.svg[]: +
+If this number is not yet an integer (whole number)
+
+* we truncate the number, so that we get an integer (whole number): image:whole.svg[] +
 and then
-* calculate the reciprocal of the fractional part ~image:https://latex.codecogs.com/svg.latex?%5Cleft%20%28%5Cfrac%7B1%7D%7B%5Cmathrm%7Bfrac%7D%28%20x_%7B%28i%29%7D%20%29%7D%20%5Cright%20%29[]~, to get the next number ~image:https://latex.codecogs.com/svg.latex?x_%7B%28i&plus;1%29%7D[]~ +
+* calculate the reciprocal of the fractional part image:reciprocal.svg[], to get the next number image:x_i1.svg[] +
 and recursion...
 
-image::{equation_link_svg}[Equation,link="https://latex.codecogs.com/svg.latex?\begin{align*}&space;x_{(i)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{\left&space;(\frac{1}{\mathrm{frac}(&space;x_{(i)}&space;)}&space;\right&space;)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{x_{(i&plus;1)}}&space;\end{align*}"]
-(Ref link:++https://www.codecogs.com/eqnedit.php?latex=\begin{align*}&space;x_{(i)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{\left&space;(\frac{1}{\mathrm{frac}(&space;x_{(i)}&space;)}&space;\right&space;)}&space;=&space;\left&space;(x_{(i)}&space;-&space;\mathrm{frac}(&space;x_{(i)}&space;)&space;\right&space;)&space;&plus;&space;\frac{1}{x_{(i&plus;1)}}&space;\end{align*}++[LaTeX Editor], with `frac(x)` as shown https://en.wikipedia.org/wiki/Fractional_part[here])
-
-We end, when we get a ~image:https://latex.codecogs.com/svg.latex?x_%7B%28j%29%7D[]~ that is a whole number.
+We end, when we get a image:x_j.svg[] that is a whole number.
 
 This gives as a vector of whole numbers:
 
-image::https://latex.codecogs.com/svg.latex?%5Bw_%7B%28i%29%7D%2C%20w_%7B%28i&plus;1%29%7D%2C%20w_%7B%28i&plus;2%29%7D%2C%20...%2C%20...%2C%20w_%7B%28j%29%7D%5D[]
+image::vector.svg[]
 
 representing a continued fraction:
 
-image::https://latex.codecogs.com/svg.latex?x_%7B%28i%29%7D%20%3D%20w_%7B%28i%29%7D%20&plus;%20%5Cfrac%7B1%7D%7Bw_%7B%28i&plus;1%29%7D&plus;%5Cfrac%7B1%7D%7Bw_%7B%28i&plus;2%29&plus;%5Cfrac%7B1%7D%7B...&plus;%5Cfrac%7B1%7D%7B...&plus;%5Cfrac%7B1%7D%7Bw_%7B%28j%29%7D%7D%7D%7D%7D%7D%7D[]
+image::cont_frac.svg[]
 
 So much for idealized math. 
 
-But given floating point value, and the lack of precision, the program calculates the resulting value, for each new ~image:https://latex.codecogs.com/svg.latex?w_%7B%28i%29%7D[]~ and compares it to ~image:https://latex.codecogs.com/svg.latex?x_%7B%28i%29%7D[]~
+But given a computers floating point with limited precision (`float`, `double`, `long double`), the program calculates the resulting value of the continued fraction, at each new image:w_i.svg[] and compares it to image:x_i.svg[]
 
-image::https://latex.codecogs.com/svg.latex?%5Cbegin%7Balign*%7D%20%26%5Bw_%7B%28i%29%7D%5D%20%5C%5C%20%26%5Bw_%7B%28i%29%7D%2C%20w_%7B%28i&plus;1%29%7D%5D%20%5C%5C%20%26%5Bw_%7B%28i%29%7D%2C%20w_%7B%28i&plus;1%29%7D%2C%20w_%7B%28i&plus;2%29%7D%5D%20%5C%5C%20%5Cend%7Balign*%7D[]
+image::vectors.svg[]
 
-The program stops, when we are close enough to ~image:https://latex.codecogs.com/svg.latex?x_%7B%28i%29%7D[]~.
-
-== Additional
-LaTeX source for the example is:
-[source,latex]
-----
-\begin{align*}
- 22.345 &=     22 + 0.345 
-          & &= 22 + \frac{1}{2.\overline{8985507246376811594202}} \\
-        &=     22 + \frac{1}{2+0.\overline{8985507246376811594202}} 
-          & &= 22 + \frac{1}{2 + \frac{1}{1.1\overline{129032258064516}}} \\
-        &=     22 + \frac{1}{2 + \frac{1}{1 + 0.1\overline{129032258064516}}}
-          & &= 22 + \frac{1}{2 + \frac{1}{1 + \frac{1}{8.\overline{857142}}}} \\
-        &=     22 + \frac{1}{2 + \frac{1}{1 + \frac{1}{8+0.\overline{857142}}}}
-          & &= 22 + \frac{1}{2 + \frac{1}{1 + \frac{1}{8+\frac{1}{1.1\overline{6}}}}} \\
-        &=     22 + \frac{1}{2 + \frac{1}{1 + \frac{1}{8+\frac{1}{1 + 0.1\overline{6}}}}}
-          & &= 22 + \frac{1}{2 + \frac{1}{1 + \frac{1}{8+\frac{1}{1 + \frac{1}{6.0}}}}} \\
-        &=     22 + \frac{1}{2 + \frac{1}{1 + \frac{1}{8+\frac{1}{1 + \frac{1}{6}}}}}
-          & & \\
-        &=     \frac{4469}{200}
-\end{align*}
-----
-
-LaTeX source for the formula is:
-[source,latex]
-----
-\begin{align*} 
-x_{(i)} = \left (x_{(i)} - \mathrm{frac}( x_{(i)} ) \right ) + \mathrm{frac}( x_{(i)} )
-        = \left (x_{(i)} - \mathrm{frac}( x_{(i)} ) \right ) + \frac{1}{\left (\frac{1}{\mathrm{frac}( x_{(i)} )} \right )} 
-        = \left (x_{(i)} - \mathrm{frac}( x_{(i)} ) \right ) + \frac{1}{x_{(i+1)}} 
-\end{align*}
-----
+The program stops, when we are close enough to image:x_i.svg[].
