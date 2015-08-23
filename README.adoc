@@ -199,3 +199,10 @@ Use e.g.
 ----
 calc -p 'c=config("mode", "frac"); 7.402001334000000000000000000000000001'
 ----
+
+== See also
+* http://fbalsalobre.free.fr/cfc.html[cfc - a continued fraction calculator]
+* http://www.boost.org/doc/libs/1_59_0/libs/math/doc/html/math_toolkit/internals1/cf.html[Boost]
+* https://crypto.stanford.edu/pbc/notes/contfrac/[Notes from the PBC Library]
+* https://en.wikipedia.org/wiki/Continued_fraction[Wikipedia]
+* http://rosettacode.org/wiki/Continued_fraction[Rosetta]
