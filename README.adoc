@@ -53,3 +53,87 @@ But given a computers floating point with limited precision (`float`, `double`, 
 image::vectors.svg[]
 
 The program stops, when we are close enough to image:x_i.svg[].
+
+== Using computer calculators (PARI/GP and Calc)
+
+=== PARI/GP
+
+http://pari.math.u-bordeaux.fr
+
+[source,bash]
+----
+apt-get install pari-gp
+----
+
+Use e.g.
+[source,bash]
+----
+echo "1+2*3" | gp -f -q   -s 60M   -D realprecision=100
+----
+
+==== `bestappr` function
+
+Use `bestappr` to get fraction approximations, with the given realprecision.
+
+[source,bash]
+----
+echo "bestappr(22.345)" | gp -f -q   -s 60M   -D realprecision=100
+----
+
+where `gp --help` shows
+[source,bash]
+----
+### Usage: gp [options] [GP files]
+Available options:
+[-f,--fast]	     Fast start: do not read .gprc
+[-q,--quiet]	     Quiet mode: do not print banner and history numbers
+[-s stacksize]	     Start with the PARI stack of given size (in bytes)
+...
+----
+
+(so `-f` causes `gp` to start, without reading `.gprc` and without reading `/etc/gprc`)
+
+and `man gp` shows
+[source,bash]
+----
+   -D, --default key=val
+       performs default(key, val); on startup, overriding values from the gprc preferences file. 'val' must be a constant value and is not
+       allowed to involve any computation (e.g. 1+1 is forbidden). Any number of such default-setting statements may appear on the command
+       line.
+----						 
+
+With PARI/GP, you can use much higher precision, than what a normal `long double` gives you. Try:
+[source,bash]
+----
+echo "bestappr(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=38
+echo "bestappr(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=100
+echo "bestappr(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=120
+echo "bestappr(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=136
+----
+
+==== `contfrac` function
+
+Use `contfrac` to get the continous fraction whole-numbers (with the given realprecision).
+
+[source,bash]
+----
+echo "contfrac(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=38
+echo "contfrac(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=100
+echo "contfrac(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=120
+echo "contfrac(7.402001334000000000000000000000000001)" | gp -f -q -s 60M -D realprecision=136
+----
+
+=== Calc
+
+http://www.isthe.com/chongo/tech/comp/calc/
+
+[source,bash]
+----
+apt-get install apcalc
+----
+
+Use e.g.
+[source,bash]
+----
+calc -p 'c=config("mode", "frac"); 7.402001334000000000000000000000000001'
+----
