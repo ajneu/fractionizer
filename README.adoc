@@ -96,6 +96,8 @@ The code currently uses
 [source,cpp]
 ----
       do {
+         // ...
+      }
       //while (std::abs((Fractionizer::calc_frac<Tfl>(vec, num, denom) - val)/val) > numeric_limits<Tfl>::min());
       while (Fractionizer::calc_frac<Tfl>(vec, num, denom) != val);
 ----
