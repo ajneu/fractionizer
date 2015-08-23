@@ -67,6 +67,18 @@ assert((std::istringstream(Print_float::print(num)) >> num2) && (num == num2));
 This uses `Print_float::print()` (https://github.com/ajneu/fractionizer/blob/master/src/print_float.h#L11[ref]), which will always print a floating point number correctly, so that the roundtrip works! +
 The clue is to use `oss << std::setprecision(std::numeric_limits<Tfl>::max_digits10)` (https://github.com/ajneu/fractionizer/blob/master/src/print_float.h#L14[ref]) as documented http://en.cppreference.com/w/cpp/types/numeric_limits/max_digits10[here].
 
+=== Caution
+
+The code currently uses 
+[source,cpp]
+----
+      do {
+      //while (std::abs((Fractionizer::calc_frac<Tfl>(vec, num, denom) - val)/val) > numeric_limits<Tfl>::min());
+      while (Fractionizer::calc_frac<Tfl>(vec, num, denom) != val);
+----
+(https://github.com/ajneu/fractionizer/blob/master/src/fractionizer.h#L69[ref]) +
+Up till now, the loop has always ended nicely. But I have no proof that it is safe, and it might be better to use some threshold comparision (the comment shows a possibility). If you can provide an example where the loop will not end, or furnish a proof that it will always end, then please let me know!
+
 == Using computer calculators (PARI/GP and Calc)
 
 === PARI/GP
