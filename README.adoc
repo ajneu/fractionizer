@@ -15,6 +15,22 @@ endif::[]
 
 C++ class to convert floating point values to fractions, by using continued fractions.
 
+== Usage
+
+[source,cpp]
+----
+#include "fractionizer.h"
+#include "print_float.h"
+
+double val = 22.345;
+double num;   // numerator
+double denom; // denominator
+Fractionizer::fractionize(val, num, denom);
+std::cout << "22.345 == " << Print_float::print(num) << '/' << Print_float::print(denom) << std::endl;
+----
+
+== How does it work?
+
 How this works is best shown by an example:
 
 image::example_frac.svg[Continued Fraction]
