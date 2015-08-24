@@ -28,7 +28,7 @@ Fractionizer::fractionize(val, num, denom);
 std::cout << "22.345 == " << Print_float::print(num) << '/' << Print_float::print(denom) << std::endl;
 ----
 
-One could also use increased precision:
+One could also use increased precision (e.g. `long double`):
 [source,cpp]
 ----
 long double num, denom;
@@ -100,7 +100,7 @@ The code currently uses
       //while (std::abs((Fractionizer::calc_frac<Tfl>(vec, num, denom) - val)/val) > numeric_limits<Tfl>::min());
       while (Fractionizer::calc_frac<Tfl>(vec, num, denom) != val);
 ----
-(https://github.com/ajneu/fractionizer/blob/master/src/fractionizer.h#L69[ref]) +
+(https://github.com/ajneu/fractionizer/blob/master/src/fractionizer.h#L72[ref]) +
 Up till now, the loop has always ended nicely. But I have no proof that it is safe, and it might be better to use some threshold comparision (the comment shows a possibility). If you can provide an example where the loop will not end, or furnish a proof that it will always end, then please let me know!
 
 For the real weirdness of floating point, try this:
@@ -115,6 +115,16 @@ Thus `22.345` as a `double` is so skew (since a double is stored as binary with 
 ----
 assert(static_cast<long double>(22.345) != 22.345L);
 std::cout << Print_float::print(static_cast<long double>(22.345) - 22.345L) << std::endl; // -1.13624387676480864684e-15L on my machine (x86_64-linux-gnu, compiled with gcc g++)
+----
+
+But there is a way of converting `double` 22.345 to `long double`, that favours numbers as being small fractions.
+[source,cpp]
+----
+  long double num, denom;
+  Fractionizer::fractionize(22.345, num, denom);
+  assert(static_cast<long double>(num/denom) == 22.345L); /* "exact" and interesting method 
+                                                             of converting double to long double
+                                                             Prefers "smaller" fractions */
 ----
 
 == Using computer calculators (PARI/GP and Calc)
