@@ -66,7 +66,7 @@ class Fractionizer {
 	v = std::modf(v, &i);
 	//std::cout << "i == " << i << '\t';
 	vec.push_back(i);
-	//std::cout << "calc == " << Fractionizer::calc_frac<Tfl>(vec, num, denom) << std::endl;
+	//std::cout << "calc == " << Fractionizer::calc_frac<Tfl>(vec, n, d) << std::endl;
       }
       //while (std::abs((Fractionizer::calc_frac<Tfl>(vec, n, d) - val)/val) > numeric_limits<Tfl>::min());
       while (Fractionizer::calc_frac<Tfl>(vec, n, d) != val);
@@ -74,16 +74,6 @@ class Fractionizer {
       num   = n;
       denom = d;
       return std::move(vec);
-	
-
-
-      /*
-      std::cout << '[';
-      for (const auto &v : vec) {
-	std::cout << v << ' ';
-      }
-      std::cout << ']' << std::endl;
-      */
     }
   
   template <typename Tfl, typename Tfl2> // Tfl should be a floating point type (preferably double or long double)
