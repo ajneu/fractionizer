@@ -8,8 +8,7 @@ ifdef::env-github[]
 endif::[]
 
 ifndef::env-github[]
-:imagesdir: https://cdn.rawgit.com/ajneu/fractionizer/master/images
-//images
+:imagesdir: images
 :toc:
 endif::[]
 

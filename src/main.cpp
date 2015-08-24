@@ -2,6 +2,7 @@
 #include <iomanip>
 #include <cassert>
 #include <sstream>
+#include <vector>
 
 #include "print_float.h"
 #include "fractionizer.h"
@@ -9,12 +10,30 @@
 // 22.345 ==   22 + (1 / (2 + (1 / (1 + (1 / (8 + (1 / (1 + (1 / (6.))))))))))
 //           [ 22,        2,        1,        8,        1,        6 ]
 
+
+template
+<typename T, template<typename ELEM, typename ALLOC=std::allocator<ELEM> > class Container>
+std::ostream& operator<< (std::ostream& os, const Container<T>& container)
+{
+  auto beg       = container.cbegin();
+  const auto end = container.cend();
+  if (beg != end) {
+    os << '[' << Print_float::print(*beg);
+    while (++beg != end) {
+      os << ", " << Print_float::print(*beg);
+    }
+    os << ']';
+  }
+  return os;
+}
+
+
 template <typename Tfl>
 void check(const char *str, Tfl d)
 {
   Tfl num;
   Tfl denom;
-  Fractionizer::fractionize(d, num, denom);
+  const auto vec = Fractionizer::fractionize(d, num, denom);
   std::cout << "as text:                  " << str << '\n'
 	    << "to type and back to text: " << Print_float::print(d) << '\n';
 
@@ -29,7 +48,7 @@ void check(const char *str, Tfl d)
   
   std::cout << "Approx via FRACTION:      (" << Print_float::print(num) << ")/(" << Print_float::print(denom) << ")\n";
   assert((num/denom) == d);  
-
+  std::cout << "Obtained via:             " << vec << '\n';
   {
     assert(std::istringstream(Print_float::print(num))   >> num);    /* round-trip: from floating to text and back to floating */
     assert(std::istringstream(Print_float::print(denom)) >> denom);  /* round-trip: from floating to text and back to floating */
@@ -40,13 +59,10 @@ void check(const char *str, Tfl d)
   }
 }
 
-template <size_t N>
-constexpr size_t str_len(const char (&)[N])
-{
-  return N-1;
-}
-
 #define mycheck(VAL) check(#VAL, VAL)
+
+
+
 
 #include <cfloat>
 
@@ -95,5 +111,13 @@ int main()
   mycheck(22.345);
   mycheck(22.345L);
 
+
+  // convert double 22.345   to   long double
+  assert(static_cast<long double>(22.345) != 22.345L);    // inexact method of converting double to long double
+
+  long double num, denom;
+  Fractionizer::fractionize(22.345, num, denom);
+  assert(static_cast<long double>(num/denom) == 22.345L); /* "exact" and interesting method of converting double to long double
+							     Prefers "smaller" fractions */
   return 0;
 }

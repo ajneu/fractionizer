@@ -20,6 +20,7 @@ using std::numeric_limits;
 
 #include <cfloat> // FLT_EPSILON, DBL_EPSILON, LDBL_EPSILON
 
+// just for fun
 namespace own {
   template <typename Tfl> // Tfl should be a floating point type (preferably double or long double)
     struct numeric_limits {
@@ -49,9 +50,11 @@ using own::numeric_limits;
 
 class Fractionizer {
  public:
-  template <typename Tfl> // Tfl should be a floating point type (preferably double or long double)
-    static void fractionize(const Tfl val, Tfl &num, Tfl &denom)
+  template <typename Tfl, typename Tfl2> // Tfl should be a floating point type (preferably double or long double)
+    static std::vector<Tfl> fractionize(const Tfl val, Tfl2 &num, Tfl2 &denom)
     {
+      Tfl n;
+      Tfl d;
       std::vector<Tfl> vec;
       Tfl i;
       Tfl v = val;
@@ -65,10 +68,14 @@ class Fractionizer {
 	vec.push_back(i);
 	//std::cout << "calc == " << Fractionizer::calc_frac<Tfl>(vec, num, denom) << std::endl;
       }
-      //while (std::abs((Fractionizer::calc_frac<Tfl>(vec, num, denom) - val)/val) > numeric_limits<Tfl>::min());
-      while (Fractionizer::calc_frac<Tfl>(vec, num, denom) != val);
+      //while (std::abs((Fractionizer::calc_frac<Tfl>(vec, n, d) - val)/val) > numeric_limits<Tfl>::min());
+      while (Fractionizer::calc_frac<Tfl>(vec, n, d) != val);
+      //assert((n/d) == val);
+      num   = n;
+      denom = d;
+      return std::move(vec);
+	
 
-      //assert((num/denom) == val);
 
       /*
       std::cout << '[';
@@ -79,8 +86,8 @@ class Fractionizer {
       */
     }
   
-  template <typename Tfl> // Tfl should be a floating point type (preferably double or long double)
-  static Tfl calc_frac(const std::vector<Tfl> &vec, Tfl &num, Tfl &denom)
+  template <typename Tfl, typename Tfl2> // Tfl should be a floating point type (preferably double or long double)
+  static Tfl calc_frac(const std::vector<Tfl> &vec, Tfl2 &num, Tfl2 &denom)
    // {2,     3,  4}
    //  2 + 1/(3+1/4)
     {
